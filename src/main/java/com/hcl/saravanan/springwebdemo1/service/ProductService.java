@@ -28,4 +28,12 @@ public class ProductService {
     public void deleteProductById(int id) {
         repo.deleteById(id);
     }
+
+    public void updateProductById(Product prd, int id) {
+        Product tempPrd = repo.findById(id).get();
+        tempPrd.setPrdPrice(prd.getPrdPrice());
+        tempPrd.setPrdName(prd.getPrdName());
+        repo.save(tempPrd);
+    }
 }
+
